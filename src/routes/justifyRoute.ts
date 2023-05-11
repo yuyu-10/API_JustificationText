@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { justifyText } from '../controller/justifyController';
+import { justifyText } from '../controllers/justifyController';
 
 export const handleJustifyRequest = (req: Request, res: Response) => {
   const j: string = justifyText(req.body.text);
