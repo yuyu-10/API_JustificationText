@@ -1,6 +1,8 @@
 import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { handleJustifyRequest } from './routes/justifyRoute';
+import { handleCreateTokenRoute } from './routes/createToken';
+
 
 const app: Application = express();
 const port: number = 3000;
@@ -14,12 +16,14 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
-// Route pour justifier un texte
-app.post('/api/justify', handleJustifyRequest);
-
 // Démarrage du serveur
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 
-export default { app };
+// Route pour justifier un texte
+app.post('/api/justify', handleJustifyRequest);
+
+//Route pour créer un token via un email
+app.post('/api/token', handleCreateTokenRoute);
+

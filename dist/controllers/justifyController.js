@@ -3,7 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.justifyText = void 0;
 const justifyText = (text) => {
     const lines = text.split(/\n/);
-    const justifiedLines = lines.map((line) => {
+    const justifiedLines = lines.map(line => {
+        if (line.length <= 80) {
+            return line;
+        }
         const words = line.split(/\s/);
         let lineLength = 0;
         let lineWords = [];
@@ -20,8 +23,7 @@ const justifyText = (text) => {
             }
             return justifiedWords;
         }, []);
-        return justifiedWords
-            .map((lineWords) => {
+        return justifiedWords.map(lineWords => {
             const totalSpaces = 80 - lineWords.reduce((sum, word) => sum + word.length, 0);
             const numGaps = lineWords.length - 1;
             if (numGaps === 0) {
@@ -34,16 +36,13 @@ const justifyText = (text) => {
                 gaps.push(gapSize);
                 remainingSpaces -= gapSize;
             }
-            return lineWords
-                .map((word, i) => {
+            return lineWords.map((word, i) => {
                 if (i === lineWords.length - 1) {
                     return word;
                 }
                 return word + ' '.repeat(gaps[i]);
-            })
-                .join('');
-        })
-            .join('\n');
+            }).join('');
+        }).join('\n');
     });
     return justifiedLines.join('\n');
 };
