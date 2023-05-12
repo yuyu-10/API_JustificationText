@@ -1,7 +1,19 @@
 import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { handleJustifyRequest } from './routes/justifyRoute';
-import { handleCreateTokenRoute } from './routes/createToken';
+import { createUser } from './routes/createUser';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import mongoose from 'mongoose';
+
+mongoose.connect(process.env.CONNECT_DB)
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((err: Error) => {
+    console.log(err);
+  });
 
 
 const app: Application = express();
@@ -25,5 +37,5 @@ app.listen(port, () => {
 app.post('/api/justify', handleJustifyRequest);
 
 //Route pour créer un token via un email
-app.post('/api/token', handleCreateTokenRoute);
+app.post('/api/token', createUser);
 

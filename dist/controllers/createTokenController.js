@@ -26,25 +26,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.saveTokenForEmail = exports.tokenExistsForEmail = exports.generateToken = void 0;
+exports.generateToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const secret = process.env.SECRET_CODE_TOKEN;
-const expiresIn = '24h';
-const generateToken = (payload) => {
-    const token = jsonwebtoken_1.default.sign(payload, secret, { expiresIn });
+const generateToken = (email) => {
+    const token = jsonwebtoken_1.default.sign(email, secret);
     return token;
 };
 exports.generateToken = generateToken;
-let tokensByEmail = {};
-const tokenExistsForEmail = (email) => {
-    return !!tokensByEmail[email];
-};
-exports.tokenExistsForEmail = tokenExistsForEmail;
-const saveTokenForEmail = (email, token) => {
-    tokensByEmail[email] = { token, words: 0 };
-    console.log(tokensByEmail);
-};
-exports.saveTokenForEmail = saveTokenForEmail;
 //# sourceMappingURL=createTokenController.js.map
