@@ -1,7 +1,8 @@
 import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { handleJustifyRequest } from './routes/justifyRoute';
-import { createUser } from './routes/createUser';
+import { createUser } from './routes/createUserRoute';
+import { tokenMiddleware } from './controllers/verifTokenController';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -34,7 +35,7 @@ app.listen(port, () => {
 });
 
 // Route pour justifier un texte
-app.post('/api/justify', handleJustifyRequest);
+app.post('/api/justify', tokenMiddleware, handleJustifyRequest);
 
 //Route pour créer un token via un email
 app.post('/api/token', createUser);

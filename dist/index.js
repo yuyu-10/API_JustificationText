@@ -29,7 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const justifyRoute_1 = require("./routes/justifyRoute");
-const createUser_1 = require("./routes/createUser");
+const createUserRoute_1 = require("./routes/createUserRoute");
+const verifTokenController_1 = require("./controllers/verifTokenController");
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const mongoose_1 = __importDefault(require("mongoose"));
@@ -54,7 +55,7 @@ app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
 // Route pour justifier un texte
-app.post('/api/justify', justifyRoute_1.handleJustifyRequest);
+app.post('/api/justify', verifTokenController_1.tokenMiddleware, justifyRoute_1.handleJustifyRequest);
 //Route pour créer un token via un email
-app.post('/api/token', createUser_1.createUser);
+app.post('/api/token', createUserRoute_1.createUser);
 //# sourceMappingURL=index.js.map

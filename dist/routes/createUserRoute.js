@@ -18,14 +18,11 @@ const createTokenController_1 = require("../controllers/createTokenController");
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.body;
     try {
-        // Vérifier si un utilisateur avec cet email existe déjà
         const existingUser = yield user_1.default.findOne({ email });
         if (existingUser) {
-            // Si un utilisateur avec cet email existe déjà, renvoyer son token
             res.status(200).json({ token: existingUser.token });
         }
         else {
-            // Sinon, créer un nouvel utilisateur avec un nouveau token
             const token = (0, createTokenController_1.generateToken)(email);
             const limit = 80000;
             const newUser = new user_1.default({
@@ -43,4 +40,4 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.createUser = createUser;
-//# sourceMappingURL=createUser.js.map
+//# sourceMappingURL=createUserRoute.js.map
