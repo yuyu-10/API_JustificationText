@@ -13,9 +13,9 @@ Ce projet est une API REST développée en Node.js et TypeScript pour la startup
 
 ## Installation
 
-Clonez le dépôt GitHub.
-Installez les dépendances : npm install.
-Lancez le serveur : npm run dev.
+* Clonez le dépôt GitHub.
+* Installez les dépendances : npm install.
+* Lancez le serveur : npm run dev.
 
 ## Utilisation
 
