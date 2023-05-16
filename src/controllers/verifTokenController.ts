@@ -6,7 +6,7 @@ import History, { IHistory } from '../models/history';
 export const tokenMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers['authorization']?.replace('Bearer', '').trim();
   const decodedToken = jwt.verify(token, process.env.SECRET_CODE_TOKEN);
-  console.log(decodedToken);
+
   try {
     const userToken = await checkToken(token, decodedToken);
     await checkLimit(res, userToken, req.body.text);

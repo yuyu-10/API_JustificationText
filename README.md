@@ -15,7 +15,8 @@ Celle-ci est déployée avec vercel.
 
 ## Utilisation
 
-URL public --> https://justify-text-api.vercel.app/
+* URL public --> https://justify-text-api.vercel.app/
+
 L'API peut être utilisée via deux endpoints :
 
 Endpoint /api/token (méthode HTTP POST) : Les données doivent être envoyées sous forme de JSON avec la clé "email" contenant l'adresse e-mail utilisée pour l'authentification. Cette adresse e-mail sera enregistrée dans la base de données, et un jeton (token) sera créé et renvoyé en réponse.

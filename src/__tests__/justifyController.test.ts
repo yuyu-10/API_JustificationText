@@ -69,5 +69,3 @@ suivent encore dans le silence de la nuit, à la douceur prochaine du retour.`
     expect(result).toEqual(output);
   })
 });
-
-

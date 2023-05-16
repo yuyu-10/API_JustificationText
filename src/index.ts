@@ -19,20 +19,22 @@ import { createUser } from './routes/createUserRoute';
 import { tokenMiddleware } from './controllers/verifTokenController';
 
 const app: Application = express();
-const port: string | number = process.env.PORT || 3000;
 
 // Middleware pour parser les requêtes en JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Port necéssaire pour l'utilisation en local
+// const port: string | number = process.env.PORT || 3000;
+
+// Démarrage du serveur en local seulement
+// app.listen(port, () => {
+//   console.log(`Server listening at http://localhost:${port}/`);
+// });
+
 // Route principale
 app.get('/', (req: Request,res: Response) => {
   res.send('Hello World!');
-});
-
-// Démarrage du serveur
-app.listen(port, () => {
-  console.log(`Server listening at https://justify-text-api.vercel.app/`);
 });
 
 // Route pour justifier un texte
