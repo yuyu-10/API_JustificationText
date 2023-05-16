@@ -1,6 +1,8 @@
 # API_Justify_Text
 
 Ce projet est une API REST développée en Node.js et TypeScript pour la startup Tictactrip. L'API permet de justifier un texte avec une largeur de ligne de 80 caractères. L'utilisateur doit fournir son adresse e-mail pour s'authentifier et accéder à l'API, avec une limite quotidienne de 80 000 mots.
+Celle-ci est déployée avec vercel.
+--> https://justify-text-api.vercel.app/
 
 ## Technologies utilisées
 
@@ -11,14 +13,9 @@ Ce projet est une API REST développée en Node.js et TypeScript pour la startup
 * Mongoose
 * Jsonwebtoken
 
-## Installation
-
-* Clonez le dépôt GitHub.
-* Installez les dépendances : npm install.
-* Lancez le serveur : npm run dev.
-
 ## Utilisation
 
+URL public --> https://justify-text-api.vercel.app/
 L'API peut être utilisée via deux endpoints :
 
 Endpoint /api/token (méthode HTTP POST) : Les données doivent être envoyées sous forme de JSON avec la clé "email" contenant l'adresse e-mail utilisée pour l'authentification. Cette adresse e-mail sera enregistrée dans la base de données, et un jeton (token) sera créé et renvoyé en réponse.
@@ -29,11 +26,11 @@ Endpoint /api/justify (méthode HTTP POST) : Les données doivent être envoyée
 
 Afin de tester et utiliser les routes, vous pouvez utiliser l'application Postman.
 
-Effectuez une requête vers l'endpoint /api/token avec la méthode POST, en ajoutant dans le corps (body) de la requête un champ "email" contenant votre adresse e-mail. Appuyez sur "Send" pour recevoir votre jeton d'authentification (token). Cela vous enregistrera dans la base de données.
+Effectuez une requête vers l'endpoint /api/token (https://justify-text-api.vercel.app/api/token) avec la méthode POST, en ajoutant dans le corps (body) de la requête un champ "email" contenant votre adresse e-mail. Appuyez sur "Send" pour recevoir votre jeton d'authentification (token). Cela vous enregistrera dans la base de données.
 
 ![/api/token](assets/authentification.png "Endpoint api/token")
 
-Effectuez ensuite une requête vers l'endpoint /api/justify avec la méthode POST pour recevoir votre texte justifié. Ajoutez votre jeton d'authentification (token) dans le header en utilisant l'en-tête 'Authorization' avec la valeur 'Bearer (token)'.
+Effectuez ensuite une requête vers l'endpoint /api/justify (https://justify-text-api.vercel.app/api/justify) avec la méthode POST pour recevoir votre texte justifié. Ajoutez votre jeton d'authentification (token) dans le header en utilisant l'en-tête 'Authorization' avec la valeur 'Bearer (token)'.
 
 ![/api/jusitfy](assets/headerToken.png "Endpoint api/justify, header 'Authorization'")
 

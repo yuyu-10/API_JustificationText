@@ -32,7 +32,7 @@ app.get('/', (req: Request,res: Response) => {
 
 // Démarrage du serveur
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
+  console.log(`Server listening at https://justify-text-api.vercel.app/`);
 });
 
 // Route pour justifier un texte
