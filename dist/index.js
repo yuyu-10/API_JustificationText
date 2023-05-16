@@ -28,9 +28,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const justifyRoute_1 = require("./routes/justifyRoute");
-const createUserRoute_1 = require("./routes/createUserRoute");
-const verifTokenController_1 = require("./controllers/verifTokenController");
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const mongoose_1 = __importDefault(require("mongoose"));
@@ -41,8 +38,11 @@ mongoose_1.default.connect(process.env.CONNECT_DB)
     .catch((err) => {
     console.log(err);
 });
+const justifyRoute_1 = require("./routes/justifyRoute");
+const createUserRoute_1 = require("./routes/createUserRoute");
+const verifTokenController_1 = require("./controllers/verifTokenController");
 const app = (0, express_1.default)();
-const port = 3000;
+const port = process.env.PORT || 3000;
 // Middleware pour parser les requêtes en JSON
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));

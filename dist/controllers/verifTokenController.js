@@ -27,7 +27,7 @@ const tokenMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         next();
     }
     catch (e) {
-        res.status(401).json({ 'error': 'You are not authentified' });
+        res.status(401).json({ 'error': 'You are not authenticated' });
     }
 });
 exports.tokenMiddleware = tokenMiddleware;
@@ -40,21 +40,21 @@ const checkToken = (token, decodedToken) => __awaiter(void 0, void 0, void 0, fu
 const checkLimit = (res, userToken, text) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id_user = userToken._id.toString();
-        const userHistory = yield history_1.default.findOne({ id_user: id_user, date: getDate() });
+        const userHistory = yield history_1.default.findOne({ id_user, date: getDate() });
         if (!userHistory) {
             const date = getDate();
             const newHistory = new history_1.default({
-                id_user: id_user,
-                date: date,
+                id_user,
+                date,
                 words: 0,
             });
             const savedHistory = yield newHistory.save();
         }
-        const newUserHistory = yield history_1.default.findOne({ id_user: id_user, date: getDate() });
+        const newUserHistory = yield history_1.default.findOne({ id_user, date: getDate() });
         const canUpdateWords = yield checkWords(text, newUserHistory.words);
         if (canUpdateWords) {
             const newWords = newUserHistory.words + text.split(' ').length;
-            const updateWords = yield history_1.default.findOneAndUpdate({ id_user: id_user, date: getDate() }, { words: newWords });
+            const updateWords = yield history_1.default.findOneAndUpdate({ id_user, date: getDate() }, { words: newWords });
         }
         else {
             res.status(402).json({ 'error': 'Payment Required' });

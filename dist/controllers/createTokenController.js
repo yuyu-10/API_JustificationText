@@ -32,7 +32,6 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const secret = process.env.SECRET_CODE_TOKEN;
 const generateToken = (email) => {
-    console.log(secret);
     const token = jsonwebtoken_1.default.sign(email, secret);
     return token;
 };

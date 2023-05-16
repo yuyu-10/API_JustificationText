@@ -4,8 +4,7 @@ dotenv.config();
 
 const secret = process.env.SECRET_CODE_TOKEN;
 
-export const generateToken = (email: String): string => {
-    console.log(secret)
+export const generateToken = (email: string): string => {
     const token = jwt.sign(email, secret);
     return token;
 };
