@@ -31,7 +31,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const mongoose_1 = __importDefault(require("mongoose"));
-mongoose_1.default.connect(process.env.MONGO_URI)
+mongoose_1.default.connect(process.env.MONGODB_URI)
     .then(() => {
     console.log('Connected to MongoDB');
 })
