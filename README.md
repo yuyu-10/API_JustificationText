@@ -11,6 +11,7 @@ Celle-ci est déployée avec vercel.
 * Express
 * Jest
 * Mongoose
+* MongoDB Atlas
 * Jsonwebtoken
 
 ## Utilisation
