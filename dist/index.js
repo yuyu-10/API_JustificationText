@@ -56,6 +56,6 @@ app.listen(port, () => {
 });
 // Route pour justifier un texte
 app.post('/api/justify', verifTokenController_1.tokenMiddleware, justifyRoute_1.handleJustifyRequest);
-//Route pour créer un token via un email
+//Route pour l'authentification par email et token
 app.post('/api/token', createUserRoute_1.createUser);
 //# sourceMappingURL=index.js.map
